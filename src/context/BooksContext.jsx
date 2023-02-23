@@ -38,9 +38,12 @@ export function BooksProvider({ children }) {
   useEffect(() => {
     const timer = setTimeout(async () => {
       try {
-        const response = await fetch(
-          'https://kavalets.com/sites/books/books.json'
-        );
+        const response = await fetch('/data/books.json', {
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+        });
         const responseJson = await response.json();
         setBooks(prev => ({ ...prev, standard: responseJson.books }));
       } catch (error) {
