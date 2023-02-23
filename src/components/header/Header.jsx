@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from 'context/AuthContext';
 import { HeaderUser } from './HeaderUser';
+import { APP_URL } from 'constants';
 import useTheme from 'hooks/useTheme';
 import logoImg from 'images/logo.svg';
 
@@ -15,7 +16,7 @@ export function Header() {
   return (
     <header className="header">
       <div className="wrapper flex middle">
-        <Link className="header__logo flex middle" to="/">
+        <Link className="header__logo flex middle" to={APP_URL}>
           <img className="header__logo-icon" src={logoImg} alt="logo" />
           <span>Js Band Store</span>
         </Link>

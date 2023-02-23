@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
+import { APP_URL } from 'constants';
 
 const BooksContext = createContext(null);
 
@@ -38,10 +39,11 @@ export function BooksProvider({ children }) {
   useEffect(() => {
     const timer = setTimeout(async () => {
       try {
-        const response = await fetch('/data/books.json', {
+        const response = await fetch(`${APP_URL}books.json`, {
           headers: {
+            // prettier-ignore
+            'Accept': 'application/json',
             'Content-Type': 'application/json',
-            Accept: 'application/json',
           },
         });
         const responseJson = await response.json();

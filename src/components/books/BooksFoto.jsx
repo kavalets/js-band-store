@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { APP_URL } from 'constants';
 import noimageImg from 'images/no-image.svg';
 
 export function BooksFoto({ id, image, title }) {
@@ -22,7 +23,7 @@ export function BooksFoto({ id, image, title }) {
   return (
     <Link
       className="books__item-foto flex middle center"
-      to={`/books/${id}`}
+      to={`${APP_URL}books/${id}`}
       ref={link}
     >
       <span className="loader is-active"></span>

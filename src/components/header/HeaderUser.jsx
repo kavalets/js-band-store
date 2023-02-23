@@ -1,10 +1,11 @@
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from 'context/AuthContext';
 import { useCart } from 'context/CartContext';
+import { APP_URL } from 'constants';
 import cartImg from 'images/cart.svg';
 import userImg from 'images/user.svg';
 import dotsImg from 'images/dots.svg';
-import { useEffect, useRef, useState } from 'react';
 
 export function HeaderUser() {
   const { cartItems } = useCart();
@@ -36,7 +37,7 @@ export function HeaderUser() {
 
   return (
     <>
-      <Link className="header__cart" to="/cart">
+      <Link className="header__cart" to={`${APP_URL}cart`}>
         {findUserBooks > 0 && (
           <span className="header__cart-count">{findUserBooks}</span>
         )}

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
+import { APP_URL } from 'constants';
 import { useAuth } from 'context/AuthContext';
 
 export function Signup() {
@@ -51,7 +52,7 @@ export function Signup() {
         Sign up
       </button>
       <p className="form__link">
-        Already have an account? <Link to="/">Sign in</Link>
+        Already have an account? <Link to={APP_URL}>Sign in</Link>
       </p>
     </div>
   );

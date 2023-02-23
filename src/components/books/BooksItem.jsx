@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { APP_URL } from 'constants';
 import { BooksFoto } from './BooksFoto';
 
 export function BooksItem({ data }) {
@@ -10,7 +11,7 @@ export function BooksItem({ data }) {
       <p className="books__item-excerpt">{data.shortDescription}</p>
       <div className="books__item-bottom flex middle">
         <span className="books__item-price">${data.price}</span>
-        <Link className="books__item-btn btn" to={`/books/${data.id}`}>
+        <Link className="books__item-btn btn" to={`${APP_URL}books/${data.id}`}>
           View
         </Link>
       </div>

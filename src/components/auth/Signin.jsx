@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { APP_URL } from 'constants';
 import { useAuth } from 'context/AuthContext';
 import userImg from 'images/user.svg';
 
@@ -36,7 +37,7 @@ export function Signin() {
         Sign in
       </button>
       <p className="form__link">
-        No account? <Link to="/sign-up">Create one!</Link>
+        No account? <Link to={`${APP_URL}sign-up`}>Create one!</Link>
       </p>
     </div>
   );

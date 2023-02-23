@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import { APP_URL } from 'constants';
 import { AuthProvider } from 'context/AuthContext';
 import { BooksProvider } from 'context/BooksContext';
 import { CartProvider } from 'context/CartContext';
@@ -18,13 +19,13 @@ export default function App() {
       <BooksProvider>
         <CartProvider>
           <Routes>
-            <Route path="/" element={<RouteLayout />}>
+            <Route path={APP_URL} element={<RouteLayout />}>
               <Route index element={<RouteSignin />} />
-              <Route path="/sign-up" element={<RouteSignup />} />
-              <Route path="/books" element={<RouteBooks />} />
-              <Route path="/books/:id" element={<RouteBook />} />
-              <Route path="/cart" element={<RouteCart />} />
-              <Route path="*" element={<Route404 />} />
+              <Route path={`${APP_URL}sign-up`} element={<RouteSignup />} />
+              <Route path={`${APP_URL}books`} element={<RouteBooks />} />
+              <Route path={`${APP_URL}books/:id`} element={<RouteBook />} />
+              <Route path={`${APP_URL}cart`} element={<RouteCart />} />
+              <Route path={`${APP_URL}*`} element={<Route404 />} />
             </Route>
           </Routes>
         </CartProvider>
