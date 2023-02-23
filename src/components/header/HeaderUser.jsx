@@ -4,13 +4,35 @@ import { useCart } from 'context/CartContext';
 import cartImg from 'images/cart.svg';
 import userImg from 'images/user.svg';
 import dotsImg from 'images/dots.svg';
+import { useEffect, useRef, useState } from 'react';
 
 export function HeaderUser() {
-  const { online, signOut } = useAuth();
   const { cartItems } = useCart();
+  const { online, signOut } = useAuth();
+  const [visible, setVisible] = useState(false);
+  const refUser = useRef(null);
   const findUser = cartItems.filter(user => user.name === online[0].name);
   const findUserBooks =
     findUser.length > 0 && findUser.map(book => book.items)[0].length;
+
+  const handlerOpen = event => {
+    event.stopPropagation();
+    setVisible(prev => !prev);
+  };
+
+  useEffect(() => {
+    const docClick = event =>
+      !refUser.current.contains(event.target) && setVisible(false);
+    const winResize = () => window.innerWidth > 799 && setVisible(false);
+
+    document.addEventListener('click', docClick);
+    window.addEventListener('resize', winResize);
+
+    return () => {
+      document.removeEventListener('click', docClick);
+      window.removeEventListener('resize', winResize);
+    };
+  }, [setVisible]);
 
   return (
     <>
@@ -20,7 +42,10 @@ export function HeaderUser() {
         )}
         <img src={cartImg} alt="cart" />
       </Link>
-      <div className="header__user flex middle">
+      <div
+        className={`header__user flex middle${visible ? ' is-visible' : ''}`}
+        ref={refUser}
+      >
         <button
           className="header__user-out btn"
           type="button"
@@ -33,7 +58,7 @@ export function HeaderUser() {
         </div>
         <span>{online[0].name}</span>
       </div>
-      <button className="header__dots btn" type="button">
+      <button className="header__dots btn" type="button" onClick={handlerOpen}>
         <img src={dotsImg} alt="dots" />
       </button>
     </>
