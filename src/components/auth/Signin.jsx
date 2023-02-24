@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { APP_URL } from 'constants';
 import { useAuth } from 'context/AuthContext';
@@ -7,6 +7,10 @@ import userImg from 'images/user.svg';
 export function Signin() {
   const [tempUser, setTempUser] = useState('');
   const { authError, signIn } = useAuth();
+
+  useEffect(() => {
+    document.title = 'Js Band Store';
+  }, []);
 
   return (
     <div className="box form">

@@ -28,6 +28,10 @@ export function Cart() {
     }
   }, [findUserBooks]);
 
+  useEffect(() => {
+    document.title = 'My cart';
+  }, []);
+
   return findUserBooks.length > 0 ? (
     <>
       <h1 className="title">My cart</h1>

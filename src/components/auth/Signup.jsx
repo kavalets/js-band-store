@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import { APP_URL } from 'constants';
@@ -26,6 +26,10 @@ export function Signup() {
 
     signUp(newUser);
   };
+
+  useEffect(() => {
+    document.title = 'Sign up';
+  }, []);
 
   return (
     <div className="box form">

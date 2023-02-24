@@ -12,6 +12,10 @@ export function Book() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    book.length > 0 && (document.title = book[0].title);
+  }, [book]);
+
+  useEffect(() => {
     if (books.standard.length > 0) {
       const timer = setTimeout(() => {
         setBook(books.standard.filter(item => +item.id === +id));

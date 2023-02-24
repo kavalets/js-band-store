@@ -1,9 +1,14 @@
+import { useEffect } from 'react';
 import { useBooks } from 'context/BooksContext';
 import { BooksFilter } from './BooksFilter';
 import { BooksItem } from './BooksItem';
 
 export function Books() {
   const { books, booksCatch } = useBooks();
+
+  useEffect(() => {
+    document.title = 'List of books';
+  }, []);
 
   return (
     <>
