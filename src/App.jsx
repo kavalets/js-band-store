@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { APP_URL } from 'constants';
 import { AuthProvider } from 'context/AuthContext';
 import { BooksProvider } from 'context/BooksContext';
@@ -25,7 +25,11 @@ export default function App() {
               <Route path={`${APP_URL}books`} element={<RouteBooks />} />
               <Route path={`${APP_URL}books/:id`} element={<RouteBook />} />
               <Route path={`${APP_URL}cart`} element={<RouteCart />} />
-              <Route path={`${APP_URL}*`} element={<Route404 />} />
+              <Route path={`${APP_URL}404`} element={<Route404 />} />
+              <Route
+                path="*"
+                element={<Navigate replace to={`${APP_URL}404`} />}
+              />
             </Route>
           </Routes>
         </CartProvider>
