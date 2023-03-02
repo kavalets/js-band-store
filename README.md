@@ -33,7 +33,7 @@ Start the server
 npm run start
 ```
 
-### Built With
+## Built With
 
 [![Node.js](https://img.shields.io/badge/-Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=FFF)](https://nodejs.org)
 [![Create React App](https://img.shields.io/badge/-Create%20React%20App-09D3AC?style=for-the-badge&logo=createreactapp&logoColor=FFF)](https://create-react-app.dev)
