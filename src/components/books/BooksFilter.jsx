@@ -29,8 +29,9 @@ export function BooksFilter() {
           id="sortPrice"
         >
           <option value="ALL">Original</option>
-          <option value="LOW_TO_HIGH">Low to High</option>
-          <option value="HIGH_TO_LOW">High to Low</option>
+          <option value="RANGE-1">$0 ... $15</option>
+          <option value="RANGE-2">$15 ... $30</option>
+          <option value="RANGE-3">$30 +</option>
         </select>
       </div>
     </div>

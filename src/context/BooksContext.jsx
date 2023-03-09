@@ -71,13 +71,16 @@ export function BooksProvider({ children }) {
 
       const timer = setTimeout(() => {
         const sorted = [...books.standard]
-          .sort((a, b) => {
-            return booksFilter.sort === 'LOW_TO_HIGH'
-              ? +a.price - +b.price
-              : booksFilter.sort === 'HIGH_TO_LOW'
-              ? +b.price - +a.price
-              : void 0;
+          .filter(item => {
+            return booksFilter.sort === 'RANGE-1'
+              ? +item.price < 15
+              : booksFilter.sort === 'RANGE-2'
+              ? +item.price >= 15 && +item.price < 30
+              : booksFilter.sort === 'RANGE-3'
+              ? +item.price >= 30
+              : item;
           })
+          .sort((a, b) => booksFilter.sort !== 'ALL' && +a.price - +b.price)
           .filter(item =>
             item.title.toLowerCase().includes(booksFilter.search.toLowerCase())
           );
